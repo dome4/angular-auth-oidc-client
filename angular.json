@@ -1210,6 +1210,110 @@
           }
         }
       }
+    },
+    "sample-code-flow-keycloak-pwa": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/sample-code-flow-keycloak-pwa",
+      "sourceRoot": "projects/sample-code-flow-keycloak-pwa/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sample-code-flow-keycloak-pwa",
+            "index": "projects/sample-code-flow-keycloak-pwa/src/index.html",
+            "main": "projects/sample-code-flow-keycloak-pwa/src/main.ts",
+            "polyfills": "projects/sample-code-flow-keycloak-pwa/src/polyfills.ts",
+            "tsConfig": "projects/sample-code-flow-keycloak-pwa/tsconfig.app.json",
+            "aot": true,
+            "assets": ["projects/sample-code-flow-keycloak-pwa/src/favicon.ico", "projects/sample-code-flow-keycloak-pwa/src/assets", "projects/sample-code-flow-keycloak-pwa/src/manifest.webmanifest"],
+            "styles": ["projects/sample-code-flow-keycloak-pwa/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/sample-code-flow-keycloak-pwa/src/environments/environment.ts",
+                  "with": "projects/sample-code-flow-keycloak-pwa/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "projects/sample-code-flow-keycloak-pwa/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sample-code-flow-keycloak-pwa:build",
+            "sslKey": "certs/dev_localhost.key",
+            "sslCert": "certs/dev_localhost.pem",
+            "port": 4204
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sample-code-flow-keycloak-pwa:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sample-code-flow-keycloak-pwa:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sample-code-flow-keycloak-pwa/src/test.ts",
+            "polyfills": "projects/sample-code-flow-keycloak-pwa/src/polyfills.ts",
+            "tsConfig": "projects/sample-code-flow-keycloak-pwa/tsconfig.spec.json",
+            "karmaConfig": "projects/sample-code-flow-keycloak-pwa/karma.conf.js",
+            "assets": ["projects/sample-code-flow-keycloak-pwa/src/favicon.ico", "projects/sample-code-flow-keycloak-pwa/src/assets", "projects/sample-code-flow-keycloak-pwa/src/manifest.webmanifest"],
+            "styles": ["projects/sample-code-flow-keycloak-pwa/src/styles.css"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/sample-code-flow-keycloak-pwa/**/*.ts", "projects/sample-code-flow-keycloak-pwa/**/*.html"]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/sample-code-flow-keycloak-pwa/e2e/protractor.conf.js",
+            "devServerTarget": "sample-code-flow-keycloak-pwa:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sample-code-flow-keycloak-pwa:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "cli": {
