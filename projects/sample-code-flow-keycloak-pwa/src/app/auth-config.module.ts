@@ -15,8 +15,11 @@ export function configureAuth(oidcConfigService: OidcConfigService) {
       logLevel: LogLevel.Debug,
       tokenRefreshInSeconds: 10,
 
-      // // Nonce is not used with refresh tokens (Keycloak)
+      // Nonce is not used with refresh tokens (Keycloak)
       ignoreNonceAfterRefresh: true,
+
+      // necessary when the app is reloaded to execute forceRefreshSession()
+      silentRenewTimeoutInSeconds: 0.5,
     });
 }
 
